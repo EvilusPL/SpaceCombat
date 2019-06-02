@@ -19,19 +19,36 @@ public class spaceShipScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            rigidbody2D.velocity = new Vector2(10, 0);
+            if (rigidbody2D.position.x <= 8)
+                rigidbody2D.velocity = new Vector2(10, 0);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rigidbody2D.velocity = new Vector2(-10, 0);
-        } else
+            if (rigidbody2D.position.x >= -8)
+                rigidbody2D.velocity = new Vector2(-10, 0);
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (rigidbody2D.position.y <= 5)
+                rigidbody2D.velocity = new Vector2(0, 10);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            if (rigidbody2D.position.y >= -5)
+                rigidbody2D.velocity = new Vector2(0, -10);
+        }
+        else
         {
             rigidbody2D.velocity = new Vector2(0, 0);
         }
+        
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bullet, transform.position, Quaternion.identity);
         }
+
+        rigidbody2D.position = new Vector2(Mathf.Clamp(rigidbody2D.position.x, -8f, 8f), Mathf.Clamp(rigidbody2D.position.y, -5f, 5f));
+
     }
 }
