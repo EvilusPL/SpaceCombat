@@ -13,6 +13,7 @@ public class bomberEnemyScript : MonoBehaviour
     public GameObject healthUp;
     public float fireRateMin = 0.6f;
     public float fireRateMax = 0.9f;
+    public int pointsForKillingEnemy = 5;
 
     private float nextFire = 0.3f;
 
@@ -76,7 +77,7 @@ public class bomberEnemyScript : MonoBehaviour
             Destroy(exp, 1);
 
             // Increase score count
-            scoreScript.scoreCount+=5;
+            scoreScript.scoreCount+=pointsForKillingEnemy;
 
         }
         else if ((name == "spaceship") || (name == "spaceship(Clone)")) // If collided with spaceship

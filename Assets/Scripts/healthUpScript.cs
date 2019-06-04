@@ -24,9 +24,7 @@ public class healthUpScript : MonoBehaviour
     // When the health bonus collides with another object (e.g. spaceship)
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        string name = collision.gameObject.name; // Name of the object that collided with the enemy
-
-        if ((name == "spaceship") || (name == "spaceship(Clone)")) // If collided with spaceship
+        if (collision.gameObject.tag == "Spaceship") // If collided with spaceship
         {
             // Increase lives count
             scoreScript.livesCount++;

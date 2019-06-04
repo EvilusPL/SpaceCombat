@@ -11,7 +11,6 @@ public class backgroundScript : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        //rigidbody2D.velocity = new Vector2(0, speed);
     }
 
     // Update is called once per frame

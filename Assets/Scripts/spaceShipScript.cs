@@ -7,7 +7,6 @@ public class spaceShipScript : MonoBehaviour
 
     public Rigidbody2D rigidbody2D;
     public GameObject bullet;
-    public AudioSource audioSource;
 
     public static float respawnTime;
 
@@ -15,7 +14,6 @@ public class spaceShipScript : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,8 +46,7 @@ public class spaceShipScript : MonoBehaviour
         
 
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            audioSource.Play();    
+        {  
             Instantiate(bullet, transform.position, Quaternion.identity);
         }
 

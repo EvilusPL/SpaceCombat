@@ -8,6 +8,7 @@ public class scoreScript : MonoBehaviour
 
     public static int scoreCount = 0;
     public static int livesCount = 3;
+    public static int powerCount = 0;
 
     public Text text;
     public Text gameOverText;
@@ -21,8 +22,8 @@ public class scoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Score: " + scoreCount + "\nLives: " + livesCount;  
-        if (livesCount == 0)
+        text.text = "Score: " + scoreCount + "\nLives: " + livesCount + "\nPower: " + powerCount;  
+        if (livesCount <= 0)
         {
             gameOverText.text = "Game over";
         } else
