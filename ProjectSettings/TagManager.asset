@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spaceship
   - PausePanel
+  - OrbEnemy
   layers:
   - Default
   - TransparentFX

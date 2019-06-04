@@ -474,8 +474,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -30}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 90, y: -60}
+  m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &551379858
 MonoBehaviour:
@@ -903,6 +903,8 @@ MonoBehaviour:
   bomberEnemy: {fileID: 6333278864347880340, guid: b88bc70a4491e834db13025ddc7c36ee,
     type: 3}
   scoutEnemy: {fileID: 8049675062792085218, guid: afd04fdc8788640429f7d156ddf6f03a,
+    type: 3}
+  orbEnemy: {fileID: 4231097477502497130, guid: c111a0c147e1ea04e88a7b08a53c52c9,
     type: 3}
   spawnTime: 2
   renderer: {fileID: 1532885581}
@@ -1795,6 +1797,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903413296569479956, guid: 55992b0cf29db3b49859ed667369f503,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903413296569479956, guid: 55992b0cf29db3b49859ed667369f503,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903413296569479956, guid: 55992b0cf29db3b49859ed667369f503,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 5903413297895547117, guid: 55992b0cf29db3b49859ed667369f503,
         type: 3}

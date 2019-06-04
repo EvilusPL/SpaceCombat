@@ -11,6 +11,7 @@ public class bomberEnemyScript : MonoBehaviour
     public GameObject spaceship;
     public GameObject enemyBullet;
     public GameObject healthUp;
+    public GameObject powerUp;
     public float fireRateMin = 0.6f;
     public float fireRateMax = 0.9f;
     public int pointsForKillingEnemy = 5;
@@ -23,6 +24,10 @@ public class bomberEnemyScript : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
 
         rigidbody2D.velocity = new Vector2(spaceship.transform.position.x, speed);
+
+        if (gameObject.tag == "OrbEnemy")
+            rigidbody2D.angularVelocity = Random.Range(-200, 200);
+
         nextFire = Time.time + Random.Range(fireRateMin, fireRateMax);
     }
 
@@ -44,7 +49,13 @@ public class bomberEnemyScript : MonoBehaviour
         if (Time.time > nextFire)
         {
             nextFire = Time.time + Random.Range(fireRateMin, fireRateMax);
-            Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            if (gameObject.tag == "OrbEnemy")
+            {
+                Instantiate(enemyBullet, transform.position, transform.rotation);
+            } else
+            {
+                Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            }
         }
 
         if ((GameObject.FindGameObjectWithTag("Spaceship") == null) && (scoreScript.livesCount > 0))
@@ -67,9 +78,18 @@ public class bomberEnemyScript : MonoBehaviour
         // If the enemy collided with a bullet
         if (name == "bullet(Clone)")
         {
+            int bonusChance = Random.Range(0, 100);
             int healthUpChance = Random.Range(0, 100);
+            int powerUpChance = Random.Range(0, 100);
+
             if (healthUpChance > 90)
-                Instantiate(healthUp, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            {
+                if (healthUpChance > 90)
+                    Instantiate(healthUp, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                if (powerUpChance > 90)
+                    Instantiate(powerUp, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            }
+
             GameObject exp = Instantiate(explosion, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
             // Destroy itself and the bullet
             Destroy(gameObject);
@@ -84,7 +104,7 @@ public class bomberEnemyScript : MonoBehaviour
         {
             // Start coroutine with explosion and generating new instance of object
             GameObject exp = Instantiate(explosion, new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y), Quaternion.identity);
-            spaceShipScript.respawnTime = Time.time + 2f;
+            spaceShipScript.respawnTime = Time.time + 3f;
             // Destroy the spaceship and explosion
             Destroy(collision.gameObject);
             Destroy(exp, 1);

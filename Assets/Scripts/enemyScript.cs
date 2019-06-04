@@ -58,7 +58,7 @@ public class enemyScript : MonoBehaviour
         {
             // Start coroutine with explosion and generating new instance of object
             GameObject exp = Instantiate(explosion, new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y), Quaternion.identity);
-            spaceShipScript.respawnTime = Time.time + 2f;
+            spaceShipScript.respawnTime = Time.time + 3f;
             // Destroy the spaceship and explosion
             Destroy(collision.gameObject);
             Destroy(exp, 1);

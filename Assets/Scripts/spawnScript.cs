@@ -7,7 +7,8 @@ public class spawnScript : MonoBehaviour
     public GameObject enemy; // Variable to store the enemy prefab
     public GameObject bomberEnemy; // Same but for the bomber enemy
     public GameObject scoutEnemy; // Scout enemy
-    public float spawnTime = 2; // Variable to know how fast we should create new enemies
+    public GameObject orbEnemy; // Orb enemy
+    public float spawnTime = 3; // Variable to know how fast we should create new enemies
     public Renderer renderer;   // Renderer component of the spawn object
 
     // Start is called before the first frame update
@@ -51,25 +52,40 @@ public class spawnScript : MonoBehaviour
         }
     }
 
+    void spawnOrbEnemy()
+    {
+        int instances = Random.Range(1, 10);
+        for (int i = 0; i < instances; i++)
+        {
+            float x1 = transform.position.x - renderer.bounds.size.x / 2;
+            float x2 = transform.position.x + renderer.bounds.size.x / 2;
+            Vector2 spawnPoint = new Vector2(Random.Range(x1, x2), transform.position.y);
+
+            Instantiate(orbEnemy, spawnPoint, Quaternion.identity);
+        }
+    }
+
     // Function for spawning enemies
     void addEnemy()
     {
         renderer = GetComponent<Renderer>();
         int randomEnemy = Random.Range(0, 100);
 
-        if (randomEnemy > 33)
+        if (randomEnemy > 25)
             spawnRockEnemy();
-        if ((randomEnemy > 33) && (randomEnemy < 66) && (Time.timeSinceLevelLoad > 15f))
+        if ((randomEnemy > 25) && (randomEnemy < 50) && (Time.timeSinceLevelLoad > 10f))
             spawnBomberEnemy();
-        if ((randomEnemy > 66) && (Time.timeSinceLevelLoad > 35f))
+        if ((randomEnemy >= 50) && (randomEnemy < 75) && (Time.timeSinceLevelLoad > 20f))
             spawnScoutEnemy();
+        if ((randomEnemy >= 75) && (Time.timeSinceLevelLoad > 30f))
+            spawnOrbEnemy();
 
         if (spawnTime > 0.5f)
         {
             spawnTime = spawnTime - 0.01f;
         } else
         {
-            spawnTime = 2f;
+            spawnTime = 3f;
         }
 
         Invoke("addEnemy", spawnTime);

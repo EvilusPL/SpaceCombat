@@ -148,8 +148,8 @@ MonoBehaviour:
     type: 3}
   enemyBullet: {fileID: 984191772245936124, guid: 56f2aaf46e36a9b489403558901ff2f1,
     type: 3}
-  healthUp: {fileID: 8248553516325140048, guid: 034539d3340605345b0f71656c7c5579,
-    type: 3}
-  fireRateMin: 0.1
-  fireRateMax: 0.3
+  healthUp: {fileID: 67470307988328157, guid: 7df621e64cb74e34383c460c2ebc924d, type: 3}
+  powerUp: {fileID: 8248553516325140048, guid: 034539d3340605345b0f71656c7c5579, type: 3}
+  fireRateMin: 0.2
+  fireRateMax: 0.4
   pointsForKillingEnemy: 10
