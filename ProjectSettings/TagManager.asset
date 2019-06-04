@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spaceship
+  - PausePanel
   layers:
   - Default
   - TransparentFX

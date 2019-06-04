@@ -8,7 +8,6 @@ public class enemyScript : MonoBehaviour
     public Rigidbody2D rigidbody2D; // Rigidbody
     public GameObject explosion;
     public GameObject spaceship;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +24,15 @@ public class enemyScript : MonoBehaviour
         if (rigidbody2D.position.y < -5.5)
             Destroy(gameObject);
 
-        if (GameObject.FindGameObjectWithTag("Spaceship") == null)
+        if ((GameObject.FindGameObjectWithTag("Spaceship") == null) && (scoreScript.livesCount > 0))
         {
-            Instantiate(spaceship, new Vector2(0, -4), Quaternion.identity);
+            if (Time.time > spaceShipScript.respawnTime)
+                Instantiate(spaceship, new Vector2(0, -4), Quaternion.identity);
+        }
+
+        if (scoreScript.livesCount == 0)
+        {
+            Destroy(spaceship);
         }
     }
 
@@ -44,20 +49,27 @@ public class enemyScript : MonoBehaviour
             Destroy(gameObject);
             Destroy(collision.gameObject);
             Destroy(exp, 1);
-            
+
             // Increase score count
             scoreScript.scoreCount++;
 
-        } else if ((name == "spaceship") || (name == "spaceship(Clone)")) // If collided with spaceship
+        }
+        else if ((name == "spaceship") || (name == "spaceship(Clone)")) // If collided with spaceship
         {
             // Start coroutine with explosion and generating new instance of object
             GameObject exp = Instantiate(explosion, new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y), Quaternion.identity);
+            spaceShipScript.respawnTime = Time.time + 2f;
             // Destroy the spaceship and explosion
             Destroy(collision.gameObject);
             Destroy(exp, 1);
-            
+
             // Decrease lives count
             scoreScript.livesCount--;
+
+            // And destroy the enemy of course with the instance of explosion
+            GameObject exp2 = Instantiate(explosion, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            Destroy(exp2, 1);
+            Destroy(gameObject);
         }
     }
 }

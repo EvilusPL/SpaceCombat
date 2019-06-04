@@ -10,6 +10,7 @@ public class scoreScript : MonoBehaviour
     public static int livesCount = 3;
 
     public Text text;
+    public Text gameOverText;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,19 @@ public class scoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Score: " + scoreCount + "\nLives: " + livesCount;   
+        text.text = "Score: " + scoreCount + "\nLives: " + livesCount;  
+        if (livesCount == 0)
+        {
+            gameOverText.text = "Game over";
+        } else
+        {
+            gameOverText.text = "";
+        }
+    }
+
+    public static void ResetScore()
+    {
+        scoreCount = 0;
+        livesCount = 3;
     }
 }

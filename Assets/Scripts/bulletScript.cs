@@ -18,11 +18,7 @@ public class bulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
+        if (rigidbody2D.position.y > 5.5)
+            Destroy(gameObject);
     }
 }

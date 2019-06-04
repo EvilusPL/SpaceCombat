@@ -7,11 +7,15 @@ public class spaceShipScript : MonoBehaviour
 
     public Rigidbody2D rigidbody2D;
     public GameObject bullet;
+    public AudioSource audioSource;
+
+    public static float respawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,6 +49,7 @@ public class spaceShipScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            audioSource.Play();    
             Instantiate(bullet, transform.position, Quaternion.identity);
         }
 
