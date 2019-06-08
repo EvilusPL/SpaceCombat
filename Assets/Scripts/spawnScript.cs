@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class spawnScript : MonoBehaviour
 {
-    public GameObject enemy; // Variable to store the enemy prefab
-    public GameObject bomberEnemy; // Same but for the bomber enemy
-    public GameObject scoutEnemy; // Scout enemy
-    public GameObject orbEnemy; // Orb enemy
-    public float spawnTime = 3; // Variable to know how fast we should create new enemies
-    public Renderer renderer;   // Renderer component of the spawn object
+    public GameObject enemy;
+    public GameObject bomberEnemy;
+    public GameObject scoutEnemy;
+    public GameObject orbEnemy;
+    public float spawnTime = 3;
+    public Renderer renderer;
 
-    // Start is called before the first frame update
     void Start()
     {
         Invoke("addEnemy", spawnTime);
@@ -28,7 +27,7 @@ public class spawnScript : MonoBehaviour
 
     void spawnBomberEnemy()
     {
-        int instances = Random.Range(1, 10);
+        int instances = Random.Range(1, 8);
         for (int i=0; i<instances; i++)
         {
             float x1 = transform.position.x - renderer.bounds.size.x / 2;
@@ -41,7 +40,7 @@ public class spawnScript : MonoBehaviour
 
     void spawnScoutEnemy()
     {
-        int instances = Random.Range(1, 10);
+        int instances = Random.Range(1, 4);
         for (int i = 0; i < instances; i++)
         {
             float x1 = transform.position.x - renderer.bounds.size.x / 2;
@@ -54,7 +53,7 @@ public class spawnScript : MonoBehaviour
 
     void spawnOrbEnemy()
     {
-        int instances = Random.Range(1, 10);
+        int instances = Random.Range(1, 2);
         for (int i = 0; i < instances; i++)
         {
             float x1 = transform.position.x - renderer.bounds.size.x / 2;
@@ -65,7 +64,6 @@ public class spawnScript : MonoBehaviour
         }
     }
 
-    // Function for spawning enemies
     void addEnemy()
     {
         renderer = GetComponent<Renderer>();
@@ -89,8 +87,5 @@ public class spawnScript : MonoBehaviour
         }
 
         Invoke("addEnemy", spawnTime);
-
     }
-
-    
 }

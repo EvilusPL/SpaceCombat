@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 284665088}
   - component: {fileID: 284665087}
   - component: {fileID: 284665086}
+  - component: {fileID: 284665091}
   m_Layer: 0
   m_Name: menuBackground
   m_TagString: Untagged
@@ -522,7 +523,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 78db929ec9ac9bc41a49e910d832583a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b4dd4fe605d3c8f4c88a30b9701b8178, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -642,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 284665087}
-  speed: -0.1
+  speed: -0.5
 --- !u!212 &284665089
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -680,7 +681,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 35313af049b4a2f42a0325330c51d74a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ddcac1fac1f5c8943a30c2ef6b724062, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -705,6 +706,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &284665091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284665085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3658d848be5d1614ca01b2476bc407e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 284665087}
+  speed: -0.1
 --- !u!1 &447707784
 GameObject:
   m_ObjectHideFlags: 0

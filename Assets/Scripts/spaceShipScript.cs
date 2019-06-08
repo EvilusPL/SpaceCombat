@@ -8,16 +8,19 @@ public class spaceShipScript : MonoBehaviour
     public Rigidbody2D rigidbody2D;
     public GameObject bullet;
     public Sprite spaceship1, spaceship2, spaceship3;
+    public static float respawnTime = 3f;
+    public static bool isImmortal;
 
-    public static float respawnTime;
+    private float immortabilityTime;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        immortabilityTime = Time.time + 3f;
+        isImmortal = true;
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f); 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (scoreScript.powerCount < 10)
@@ -26,6 +29,12 @@ public class spaceShipScript : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = spaceship2;
         if (scoreScript.powerCount >= 30)
             GetComponent<SpriteRenderer>().sprite = spaceship3;
+
+        if (Time.time > immortabilityTime)
+        {
+            isImmortal = false;
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+        }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -54,14 +63,14 @@ public class spaceShipScript : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (scoreScript.powerCount < 10)
+            if (scoreScript.powerCount < 5)
                 Instantiate(bullet, transform.position, Quaternion.identity);
-            if ((scoreScript.powerCount >= 10) && (scoreScript.powerCount < 30))
+            if ((scoreScript.powerCount >= 5) && (scoreScript.powerCount < 10))
                 for (int i=1; i<3; i++)
-                    Instantiate(bullet, new Vector2(transform.position.x - (i*2), transform.position.y), Quaternion.identity);
-            if (scoreScript.powerCount >= 30)
+                    Instantiate(bullet, new Vector2(transform.position.x - i, transform.position.y), Quaternion.identity);
+            if (scoreScript.powerCount >= 20)
                 for (int i = 1; i < 4; i++)
-                    Instantiate(bullet, new Vector2(transform.position.x - (i * 3), transform.position.y), Quaternion.identity);
+                    Instantiate(bullet, new Vector2(transform.position.x - i, transform.position.y), Quaternion.identity);
         }   
 
         rigidbody2D.position = new Vector2(Mathf.Clamp(rigidbody2D.position.x, -8f, 8f), Mathf.Clamp(rigidbody2D.position.y, -5f, 5f));

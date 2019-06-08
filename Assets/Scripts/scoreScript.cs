@@ -13,13 +13,11 @@ public class scoreScript : MonoBehaviour
     public Text text;
     public Text gameOverText;
 
-    // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         text.text = "Score: " + scoreCount + "\nLives: " + livesCount + "\nPower: " + powerCount;  

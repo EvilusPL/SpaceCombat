@@ -7,13 +7,11 @@ public class backgroundScript : MonoBehaviour
     public Rigidbody2D rigidbody2D;
     public float speed = -0.1f;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (rigidbody2D.position.y <= -15)

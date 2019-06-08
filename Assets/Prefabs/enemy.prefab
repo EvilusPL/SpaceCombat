@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 4461596035766100802}
   - component: {fileID: 1704338683963043703}
   - component: {fileID: 4815856889578619942}
-  - component: {fileID: 1489035375408150819}
   - component: {fileID: -6592787622023418165}
+  - component: {fileID: 2369132922807249083}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: BasicEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,23 +103,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1489035375408150819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4174513428226071936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe2737241205734cb7cfeec4d67239c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: -5
-  rigidbody2D: {fileID: 4815856889578619942}
-  explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
-  spaceship: {fileID: 1481028771267361607, guid: 593190db3976a4a4991b2654337db87e,
-    type: 3}
 --- !u!61 &-6592787622023418165
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +129,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2369132922807249083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174513428226071936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c49ffbbb3910d4a9fbaf32296465ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -3
+  rigidbody2D: {fileID: 4815856889578619942}
+  explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  spaceship: {fileID: 1481028771267361607, guid: 593190db3976a4a4991b2654337db87e,
+    type: 3}
+  enemyBullet: {fileID: 0}
+  healthUp: {fileID: 67470307988328157, guid: 7df621e64cb74e34383c460c2ebc924d, type: 3}
+  powerUp: {fileID: 8248553516325140048, guid: 034539d3340605345b0f71656c7c5579, type: 3}
+  fireRateMin: 0.6
+  fireRateMax: 0.9
+  pointsForKillingEnemy: 1
