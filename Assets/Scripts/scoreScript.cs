@@ -12,7 +12,7 @@ public class scoreScript : MonoBehaviour
 
     public Text text;
     public Text gameOverText;
-
+r
     void Start()
     {
         text = GetComponent<Text>();
@@ -34,5 +34,6 @@ public class scoreScript : MonoBehaviour
     {
         scoreCount = 0;
         livesCount = 3;
+        powerCount = 0;
     }
 }
